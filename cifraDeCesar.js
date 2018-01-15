@@ -38,3 +38,6 @@ CifraDeCesar.prototype.encript = function() {
 	} 
 	return wordEncripted;
 }
+
+let message = new CifraDeCesar("Mundo", 3).encript();
+console.log(message);
