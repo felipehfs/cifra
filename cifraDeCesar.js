@@ -12,26 +12,26 @@ function CifraDeCesar(word, jump){
 	this.jump = jump;
 }
 
-/* Encriptação das letras */
-CifraDeCesar.prototype.converter = function(letter){
-	letter = letter.toLowerCase();
-	const letters = "abcdefghijklmnopqrstuvwyxzãéíêçêâ";
-	let index = letters.indexOf(letter) + this.jump;
-	if (index >= letters.length) {
-		index = Math.abs(letters.length - index); 
-	}
-	return letters.slice(index, index + 1);
-}
-
 /* Formação da palavra criptografada */
 CifraDeCesar.prototype.build = function() {
 	let wordEncripted = "";	
 	let sinais = ".!?;, "
+
+	function converter(letter, jump) {
+		letter = letter.toLowerCase();
+		const letters = "abcdefghijklmnopqrstuvwyxzãéíêçêâ";
+		let index = letters.indexOf(letter) + jump;
+		if (index >= letters.length) {
+			index = Math.abs(letters.length - index); 
+		}
+		return letters.slice(index, index + 1);
+	}
+
 	for(let char of this.word){
 		if (sinais.includes(char)) {
 			wordEncripted += char;
 		} else {
-			wordEncripted += this.converter(char);
+			wordEncripted += converter(char, this.jump);
 		}
 	} 
 	return wordEncripted;
