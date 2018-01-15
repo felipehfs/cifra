@@ -1,6 +1,7 @@
 "use strict";
 // Criptografia de substituição utilizado por Júlio César no império romano.
-
+// Feito por Felipe Henrique
+// © 2018 Copyright - Felipe Henrique - All rights reserved 
 /**
 A classe CifraDeCesar tem como responsabilidade a encriptação da informação passada.
 @constructor
@@ -12,11 +13,12 @@ function CifraDeCesar(word, jump){
 	this.jump = jump;
 }
 
-/* Formação da palavra criptografada */
-CifraDeCesar.prototype.build = function() {
+/* Formação de toda frase criptografada */
+CifraDeCesar.prototype.encript = function() {
 	let wordEncripted = "";	
 	let sinais = ".!?;, "
 
+	/* A função converter faz a Criptografia de letra por letra */
 	function converter(letter, jump) {
 		letter = letter.toLowerCase();
 		const letters = "abcdefghijklmnopqrstuvwyxzãéíêçêâ";
@@ -36,6 +38,3 @@ CifraDeCesar.prototype.build = function() {
 	} 
 	return wordEncripted;
 }
-
-let c = new CifraDeCesar("Vamos ver se vai funcionar o espaço, senão a coisa vai ficar perdida...", 3);
-console.log(c.build());
